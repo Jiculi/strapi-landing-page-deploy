@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_elements_inputs",
+  "info": {
+    "displayName": "Input",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "placeholder": {
+      "type": "string"
+    },
+    "label": {
+      "type": "string"
+    },
+    "inputType": {
+      "type": "string"
+    },
+    "button": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.button-link"
+    }
+  }
+}
