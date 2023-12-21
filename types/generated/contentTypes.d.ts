@@ -683,12 +683,19 @@ export interface ApiCategoriaCategoria extends Schema.CollectionType {
     singularName: 'categoria';
     pluralName: 'categorias';
     displayName: 'Categoria';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     nombre: Attribute.String;
+    productos: Attribute.Relation<
+      'api::categoria.categoria',
+      'oneToMany',
+      'api::producto.producto'
+    >;
+    slug: Attribute.UID<'api::categoria.categoria', 'nombre'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -757,11 +764,16 @@ export interface ApiProductoProducto extends Schema.CollectionType {
   };
   attributes: {
     nombre: Attribute.String;
-    precio: Attribute.Integer;
+    precio: Attribute.Decimal;
     informacionProducto: Attribute.Text;
     informacionCompra: Attribute.Text;
     descripcion: Attribute.String;
     imagenProducto: Attribute.Media;
+    categoria: Attribute.Relation<
+      'api::producto.producto',
+      'manyToOne',
+      'api::categoria.categoria'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
